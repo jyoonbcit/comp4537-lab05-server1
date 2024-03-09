@@ -2,13 +2,45 @@ import message from "..en/lang/user.js";
 import patients from "../en/lang/patient.js";
 
 const endPointRoot = "https://comp4537-lab04-server.vercel.app/api/server.js/"; // replace with server's endpoint
-
+const xhr = new XMLHttpRequest();
 
 class Query {
 
     executeQuery() {
-
+        const query = document.getElementById('queryInput').value.trim();
+        const method = this.determineMethod(query);
+        xhr.open(method, endPointRoot, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                console.log(response);
+                document.getElementById("response").innerHTML = message.querySuccess;
+            } else {
+                console.log("Error: " + xhr.status);
+                document.getElementById("response").innerHTML = message.queryFail;
+            }
+        }
+        if (method === 'POST') {
+            xhr.send(JSON.stringify({ query: query }));
+        } else if (method === 'GET') {
+            xhr.send();
+        } else {
+            document.getElementById("response").innerHTML = method;
+        }
     }
+
+    determineMethod(query) {
+        if (query.toLowerCase().startsWith('insert')) {
+            return 'POST';
+        } else if (query.toLowerCase().startsWith('select')) {
+            return 'GET';
+        } else {
+            return message.invalidQuery;
+        }
+    }
+
+
 
     postQuery() {
         const insertQuery = `INSERT INTO patient (name, dateOfBirth) VALUES ${patients.map(patient => `('${patient.name}', '${patient.dateOfBirth}')`).join(', ')}`;
@@ -31,5 +63,11 @@ class Query {
 
 }
 
-
-const xhr = new XMLHttpRequest();
+const query = new Query();
+document.getElementById("executeQueryBtn").addEventListener("click", () => {
+    query.executeQuery();
+});
+document.getElementById("postQueryBtn").addEventListener("click", () => {
+    query.postQuery();
+});
+export default Query;
