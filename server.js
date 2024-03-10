@@ -1,5 +1,5 @@
-import message from "..en/lang/user.js";
-import patients from "../en/lang/patient.js";
+import message from "../en/lang/messages/user.js";
+import patients from "../en/lang/messages/patient.js";
 
 const endPointRoot = "https://comp4537-lab04-server.vercel.app/api/server.js/"; // replace with server's endpoint
 const xhr = new XMLHttpRequest();

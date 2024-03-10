@@ -5,4 +5,4 @@ const message = {
     querySuccess: "Query successful",
 };
 
-module.exports = message;
+export default message;

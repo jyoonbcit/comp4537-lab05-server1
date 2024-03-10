@@ -5,4 +5,4 @@ const patients = [
     { name: "Elon Musk", dateOfBirth: "1999-01-01" },
 ];
 
-module.exports = patients;
+export default patients;
