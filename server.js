@@ -25,7 +25,7 @@ class Query {
         } else if (method === 'GET') {
             xhr.send();
         } else {
-            document.getElementById("response").innerHTML = method;
+            document.getElementById("response").innerHTML = message.sqlError;
         }
     }
 
