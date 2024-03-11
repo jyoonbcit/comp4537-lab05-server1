@@ -23,7 +23,7 @@ class Query {
         if (method === 'POST') {
             xhr.send(JSON.stringify({ query: query }));
         } else if (method === 'GET') {
-            xhr.send();
+            xhr.send(JSON.stringify({ query: query }));
         } else {
             document.getElementById("response").innerHTML = message.sqlError;
         }
