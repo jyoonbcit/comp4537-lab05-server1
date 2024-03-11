@@ -1,11 +1,10 @@
-import message from "../en/lang/messages/user.js";
-import patients from "../en/lang/messages/patient.js";
+import patients from '../en/lang/messages/patient.js';
+import message from '../en/lang/messages/user.js';
 
-const endPointRoot = "https://comp4537-lab04-server.vercel.app/api/server.js/"; // replace with server's endpoint
+const endPointRoot = "https://comp4537-lab05-server2.vercel.app/patient"; // replace with server's endpoint
 const xhr = new XMLHttpRequest();
 
 class Query {
-
     executeQuery() {
         const query = document.getElementById('queryInput').value.trim();
         const method = this.determineMethod(query);
