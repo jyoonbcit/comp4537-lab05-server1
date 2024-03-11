@@ -25,6 +25,7 @@ class Query {
         } else if (method === 'GET') {
             xhr.send(JSON.stringify({ query: query }));
         } else {
+            console.log("This is not a Post or Get request")
             document.getElementById("response").innerHTML = message.sqlError;
         }
     }
