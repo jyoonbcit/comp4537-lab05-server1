@@ -10,7 +10,7 @@ class Query {
         const method = this.determineMethod(query);
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                const response = JSON.parse(xhr.responseText);
+                const response = JSON.stringify(xhr.responseText);
                 console.log(response);
                 document.getElementById("response").innerHTML = response;
             } else {
