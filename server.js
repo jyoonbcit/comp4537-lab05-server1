@@ -22,7 +22,7 @@ class Query {
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.send(JSON.stringify({ query: query }));
         } else if (method === 'GET') {
-            xhr.open(method, encodeURIComponent(query));
+            xhr.open(method, endPointRoot + encodeURIComponent(query));
             xhr.setRequestHeader("Content-Type", "application/json");
             console.log("Sending GET request");
             xhr.send();
