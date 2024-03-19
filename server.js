@@ -12,7 +12,7 @@ class Query {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 const response = JSON.parse(xhr.responseText);
                 console.log(response);
-                document.getElementById("response").innerHTML = message.querySuccess;
+                document.getElementById("response").innerHTML = response;
             } else {
                 console.log("Error: " + xhr.status);
                 document.getElementById("response").innerHTML = message.queryFail;
