@@ -1,7 +1,7 @@
 import patients from '../en/lang/messages/patient.js';
 import message from '../en/lang/messages/user.js';
 
-const endPointRoot = "https://comp4537-lab05-server2.vercel.app";
+const endPointRoot = "https://comp4537-lab05-server2.vercel.app/patient";
 const xhr = new XMLHttpRequest();
 
 class Query {
