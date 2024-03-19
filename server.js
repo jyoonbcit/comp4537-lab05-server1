@@ -22,7 +22,7 @@ class Query {
         if (method === 'POST') {
             xhr.send(JSON.stringify({ query: query }));
         } else if (method === 'GET') {
-            xhr.open(method, encodeURIComponent(query));
+            xhr.open(method, encodeURIComponent(query), true);
             console.log("Sending GET request");
             xhr.send();
         } else {
@@ -43,7 +43,7 @@ class Query {
 
     postQuery() {
         const insertQuery = `INSERT INTO patient (name, dateOfBirth) VALUES ${patients.map(patient => `('${patient.name}', '${patient.dateOfBirth}')`).join(', ')}`;
-        xhr.open("POST", endPointRoot);
+        xhr.open("POST", endPointRoot, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4 && xhr.status === 200) {
